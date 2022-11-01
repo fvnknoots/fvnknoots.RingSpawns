@@ -1,0 +1,85 @@
+{
+    "Name": "fvnknoots.RingSpawns",
+    "Description": "A different spawn algorithm",
+    "Version": "1.0.0",
+    "LoadPriority": 10,
+    "ConVars": [
+        // 1 = RingSpawns enabled, 0 = disabled
+        {
+            "Name": "ringspawns_enabled",
+            "DefaultValue": "1"
+        },
+
+        // Preferred distance (in meters) to last spawned teammate.
+        // 20 meters can lead to pretty packed games,
+        // while 40 seems to be more spread out like vanilla.
+        // Recommended range: 20-40
+        {
+            "Name": "ringspawns_friend_dist",
+            "DefaultValue": "30"
+        },
+
+        // Preferred distance (in meters) to median enemy team position
+        // in case there are no living teammates (eg. in a 1v1 or 1v2 situation),
+        // or if playing FFA.
+        // The smaller this is, the less time you spend looking for enemies
+        // when having a 1v1 or 1v2 on a big map.
+        // Recommended range: 60-90
+        {
+            "Name": "ringspawns_1vx_dist",
+            "DefaultValue": "90"
+        },
+
+        // Minimum distance (in meters) to an enemy pilot at a new spawn,
+        // eg. with 25, you should spawn without any enemies in a 25 meter radius.
+        // The higher this is, the harder it is to find valid spawns on crowded maps,
+        // so the recommended range: 20-30
+        {
+            "Name": "ringspawns_min_enemy_pilot_dist",
+            "DefaultValue": "30"
+        },
+
+        // Minimum distance (in meters) to an enemy titan at spawn.
+        {
+            "Name": "ringspawns_min_enemy_titan_dist",
+            "DefaultValue": "40"
+        },
+
+        // Minimum distance (in meters) to an enemy reaper at spawn.
+        {
+            "Name": "ringspawns_min_enemy_reaper_dist",
+            "DefaultValue": "20"
+        },
+
+        // Distance reduction for LF maps (stacks, deck, etc.) due to their smaller size.
+        // Applies to all distances.
+        {
+            "Name": "ringspawns_lf_map_dist_factor",
+            "DefaultValue": "0.6"
+        },
+
+        // Minimap modes:
+        //  2 = show both enemy and friendly team median positions
+        //  1 = only show friendly team's median position
+        //  0 = do not show team positions at all
+        {
+            "Name": "ringspawns_minimap_visibility",
+            "DefaultValue": "2"
+        },
+
+        // 1 = Print debug messages to log (starting with the string "[ringspawns/debug]")
+        {
+            "Name": "ringspawns_debug_enabled",
+            "DefaultValue": "0"
+        }
+    ],
+    "Scripts": [
+        {
+            "Path": "ringspawns.nut",
+            "RunOn": "SERVER",
+            "ServerCallback": {
+                "After": "RingSpawns_Init"
+            }
+        }
+    ]
+}
