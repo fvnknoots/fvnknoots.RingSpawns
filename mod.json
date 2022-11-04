@@ -1,6 +1,6 @@
 {
     "Name": "fvnknoots.RingSpawns",
-    "Description": "A different spawn algorithm",
+    "Description": "A different pilot spawn algorithm for Northstar",
     "Version": "1.0.0",
     "LoadPriority": 10,
     "ConVars": [
